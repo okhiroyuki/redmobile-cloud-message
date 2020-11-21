@@ -11,6 +11,10 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 
+app.get('/', function(request, response) {
+    response.send('Hello World!\n');
+});
+
 app.post('/v1/message/send', async (request, response) => {
     const message = request.body;
     console.log(message);
