@@ -1,0 +1,47 @@
+openapi: 3.0.0
+servers:
+  # Added by API Auto Mocking Plugin
+  - description: v1 endpoint
+    url: redmobile-cloud-message.herokuapp.com/v1
+info:
+  description: This is a Cloud Message API for RedMobile
+  version: "1.0.0"
+  title: Cloud Message Api for RedMobile
+  contact:
+    email: ok.okada.hiroyuki@gmail.com
+  license:
+    name: MIT
+    url: 'https://raw.githubusercontent.com/okhiroyuki/redmobile-cloud-message/main/LICENSE'
+paths:
+  /message/send:
+    post:
+      summary: send cloud message
+      operationId: sendMessage
+      description: send cloud message
+      responses:
+        '200':
+          description: send success
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Message"
+        description: Inventory item to add
+components:
+  schemas:
+    Message:
+      type: object
+      required: 
+        - token
+      properties:
+        token:
+          type: "string"
+        notification:
+          $ref: "#/components/schemas/Notification"
+    Notification:
+      type: object
+      properties:
+        title:
+          type: string
+        body:
+          type: string
