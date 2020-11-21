@@ -37,11 +37,6 @@ components:
         token:
           type: "string"
         notification:
-          $ref: "#/components/schemas/Notification"
-    Notification:
+          $ref: "#/components/schemas/Data"
+    Data:
       type: object
-      properties:
-        title:
-          type: string
-        body:
-          type: string
