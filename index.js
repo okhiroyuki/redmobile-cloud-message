@@ -19,14 +19,18 @@ app.post('/v1/message/send', async (request, response) => {
     const message = request.body;
     console.log(message);
     delete(message.notification);
-    try{
-        const result = await firebase.sendMessage(message);
-        response.send(result);
-    }catch(error){
-        response
-            .status(500)
-            .send(error.message);
-    }        
+    if(message.hasOwnProperty('data')){
+        try{
+            const result = await firebase.sendMessage(message);
+            response.send(result);
+        }catch(error){
+            response
+                .status(500)
+                .send(error.message);
+        }                    
+    }else{
+        response.status(500).send("The data object is always required")
+    }
 });
 
 app.listen(app.get('port'), () => {
