@@ -12,12 +12,13 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 app.get('/', function(request, response) {
-    response.send('Hello World!\n');
+    response.sendFile(__dirname + '/redoc-static.html');
 });
 
 app.post('/v1/message/send', async (request, response) => {
     const message = request.body;
     console.log(message);
+    delete(message.notification);
     try{
         const result = await firebase.sendMessage(message);
         response.send(result);
@@ -25,7 +26,7 @@ app.post('/v1/message/send', async (request, response) => {
         response
             .status(500)
             .send(error.message);
-    }    
+    }        
 });
 
 app.listen(app.get('port'), () => {
