@@ -31,7 +31,7 @@ components:
   schemas:
     Message:
       type: object
-      required: 
+      required:
         - token
         - data
       properties:

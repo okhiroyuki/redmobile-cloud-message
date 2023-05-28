@@ -27,7 +27,7 @@ app.post('/v1/message/send', async (request, response) => {
             response
                 .status(500)
                 .send(error.message);
-        }                    
+        }
     }else{
         response.status(500).send("The data object is always required")
     }

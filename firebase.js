@@ -8,11 +8,11 @@ function init(){
     }else{
         serviceAccount = require("./serviceAccountKey.json");
     }
-    
+
     admin.initializeApp({
       credential: admin.credential.cert(serviceAccount),
       databaseURL: "https://redmobile-1c98d.firebaseio.com"
-    });    
+    });
 }
 
 async function sendMessage(message){
