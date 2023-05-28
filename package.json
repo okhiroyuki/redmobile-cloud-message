@@ -1,6 +1,6 @@
 {
   "name": "redmobile-cloud-message",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "cloud message api for redmobile",
   "main": "index.js",
   "scripts": {
